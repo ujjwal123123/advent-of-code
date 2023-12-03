@@ -9,7 +9,7 @@ for l, line in enumerate(lines):
     num = 0
     to_count = False
 
-    def check_ngh(l, c):
+    def check_neighbour(l, c):
         for dl in (-1, 0, 1):
             if l + dl < 0 or l + dl >= len(lines):
                 continue
@@ -25,7 +25,7 @@ for l, line in enumerate(lines):
     for c, char in enumerate(line):
         if char.isnumeric():
             num = num * 10 + int(char)
-            if not to_count and check_ngh(l, c):
+            if not to_count and check_neighbour(l, c):
                 to_count = True
 
         else:
