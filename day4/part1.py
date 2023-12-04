@@ -7,10 +7,7 @@ for line in stdin:
     winning: set[str] = set(first.split())
     have: list[str] = second.split()
 
-    count = 0
-    for num in have:
-        if num in winning:
-            count += 1
+    count = sum(1 for num in have if num in winning)
 
     ans += (1 << count) // 2
 

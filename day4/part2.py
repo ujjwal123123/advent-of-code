@@ -13,10 +13,7 @@ for line in stdin:
     current_instances = dq.popleft() if dq else 1
     ans += current_instances
 
-    count = 0
-    for num in have:
-        if num in winning:
-            count += 1
+    count = sum(1 for num in have if num in winning)
 
     for c in range(count):
         if c < len(dq):
