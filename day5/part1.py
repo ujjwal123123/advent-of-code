@@ -24,28 +24,19 @@ def get_rulesets() -> list[list[list[int]]]:
     return rulesets
 
 
-def transform(seeds: list[int], ruleset: list[list[int]]) -> list[int]:
-    new_seeds = []
+def transform(seed: int, ruleset: list[list[int]]) -> int:
+    for rule in ruleset:
+        dest, source, span = rule
 
-    for seed in seeds:
-        dest_found = False
-        for rule in ruleset:
-            dest, source, span = rule
+        if seed in range(source, source + span):
+            return dest + seed - source
 
-            if seed in range(source, source + span):
-                new_seeds.append(dest + seed - source)
-                dest_found = True
-                break
-
-        if not dest_found:
-            new_seeds.append(seed)
-
-    return new_seeds
+    return seed
 
 
 rulesets = get_rulesets()
 
-for rule in rulesets:
-    seeds = transform(seeds, rule)
+for ruleset in rulesets:
+    seeds = [transform(seed, ruleset) for seed in seeds]
 
 print(min(seeds))
