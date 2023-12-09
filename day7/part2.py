@@ -29,21 +29,7 @@ def comparator(hand):
         else:
             ans.append(6)
 
-    strength = (
-        "A",
-        "K",
-        "Q",
-        "T",
-        "9",
-        "8",
-        "7",
-        "6",
-        "5",
-        "4",
-        "3",
-        "2",
-        "J",
-    )
+    strength = ("A", "K", "Q", "T", "9", "8", "7", "6", "5", "4", "3", "2", "J")
 
     for char in hand:
         ans.append(strength.index(char))
